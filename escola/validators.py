@@ -7,7 +7,9 @@ def cpf_invalido(numero_cpf):
     return not cpf.validate(numero_cpf)
 
 def nome_invalido(nome):
-    return not nome.isalpha()
+    # Permite letras (incluindo acentuadas) e espaços entre palavras
+    nome = nome.strip()
+    return not re.match(r'^[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*$', nome)
 
 def numero_celular_invalido(numero_celular):
     # Modelo esperado: DDD 99999-9999
